@@ -1,39 +1,45 @@
 # External libraries
 if (OSS_ENABLE_BENCHMARKING)
-    set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
-    set(BENCHMARK_ENABLE_GTEST_TESTS OFF CACHE BOOL "" FORCE)
-    set(BENCHMARK_ENABLE_EXCEPTIONS OFF CACHE BOOL "" FORCE)
-    set(BENCHMARK_ENABLE_LTO ON CACHE BOOL "" FORCE)
-    set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
-
-    # set_option(BENCHMARK_USE_LIBCXX "Build and test using libc++ as the standard library." OFF)
     
-    add_subdirectory(external/google/benchmark/ external/google/benchmark)
+    if(NOT TARGET benchmark)
+        set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+        set(BENCHMARK_ENABLE_GTEST_TESTS OFF CACHE BOOL "" FORCE)
+        set(BENCHMARK_ENABLE_EXCEPTIONS OFF CACHE BOOL "" FORCE)
+        set(BENCHMARK_ENABLE_LTO ON CACHE BOOL "" FORCE)
+        set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
+
+        # set_option(BENCHMARK_USE_LIBCXX "Build and test using libc++ as the standard library." OFF)
+        
+        add_subdirectory(external/google/benchmark/ external/google/benchmark)
+        set_property(TARGET benchmark PROPERTY FOLDER "external-libs")
+    endif()
 
     add_library(oss::ext_google_benchmark
         ALIAS
             benchmark
     )
-
-    set_property(TARGET benchmark PROPERTY FOLDER "external-libs")
 endif()
 
 if (OSS_ENABLE_TESTING)
-    set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
-    set(BUILD_GTEST ON CACHE BOOL "" FORCE)
-    set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
-    set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-    add_subdirectory(external/google/googletest/ external/google/googletest)
+    if(NOT TARGET gtest_main)
+        set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+        set(BUILD_GTEST ON CACHE BOOL "" FORCE)
+        set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+        set(INSTALL_GMOCK OFF CACHE BOOL "" FORCE)
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+        add_subdirectory(external/google/googletest/ external/google/googletest)
+        
+        set_property(TARGET gtest_main PROPERTY FOLDER "external-libs")
+        set_property(TARGET gtest PROPERTY FOLDER "external-libs")
+    endif()
+
 
     add_library(oss::ext_google_test
         ALIAS
             gtest_main
     )
-
-    set_property(TARGET gtest_main PROPERTY FOLDER "external-libs")
-    set_property(TARGET gtest PROPERTY FOLDER "external-libs")
 endif()
 
 # Internal libraries

@@ -1,21 +1,21 @@
-project(compile-options-private
+project(oss-compile-options-private
     VERSION 0.0
     LANGUAGES CXX
 )
 
 option(OSS_USE_LIBCXX "Use clangs libcxx. Only works when using clang." OFF)
 
-add_library(compile-options-private
+add_library(oss-compile-options-private
     INTERFACE
 )
 
 add_library(oss::compile-options-private
     ALIAS
-        compile-options-private
+        oss-compile-options-private
 )
 
 if (MSVC)
-    target_compile_options(compile-options-private
+    target_compile_options(oss-compile-options-private
         INTERFACE
             /GR-    # Disable RTTI
             #/EH-    # Disable exception handling
@@ -29,7 +29,7 @@ if (MSVC)
             $<$<CONFIG:Release>:/GS->  # No Buffer Security Checks
     )
 elseif(UNIX)
-    target_compile_options(compile-options-private
+    target_compile_options(oss-compile-options-private
         INTERFACE
             -fno-rtti
             -flto
@@ -45,7 +45,7 @@ elseif(UNIX)
 endif()
 
 if (("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") AND OSS_USE_LIBCXX)
-        target_compile_options(compile-options-private
+        target_compile_options(oss-compile-options-private
             INTERFACE
                 -stdlib=libc++
         )
@@ -53,7 +53,7 @@ endif()
 
 install(
     TARGETS
-        compile-options-private
+        oss-compile-options-private
     EXPORT
         CompileOptionsPrivateTargets
 )

@@ -5,9 +5,9 @@ project(OSS
     LANGUAGES CXX
 )
 
-if (NOT EXISTS ${PROJECT_SOURCE_DIR}/libs/external)
-    message(FATAL_ERROR "Please run get_latests_deps.sh before building cmake")
-endif()
+# if (NOT EXISTS ${PROJECT_SOURCE_DIR}/libs/external)
+#     message(FATAL_ERROR "Please run get_latests_deps.sh before building cmake")
+# endif()
 
 option(OSS_ENABLE_BENCHMARKING "Build and link google-benchmark lib and executable" OFF)
 option(OSS_ENABLE_TESTING "Build and link google-test lib and executable" OFF)
