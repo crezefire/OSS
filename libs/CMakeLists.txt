@@ -8,7 +8,9 @@ if (OSS_ENABLE_BENCHMARKING)
         set(BENCHMARK_ENABLE_LTO ON CACHE BOOL "" FORCE)
         set(BENCHMARK_ENABLE_INSTALL OFF CACHE BOOL "" FORCE)
 
-        # set_option(BENCHMARK_USE_LIBCXX "Build and test using libc++ as the standard library." OFF)
+        if (OSS_USE_LIBCXX)
+            set(BENCHMARK_USE_LIBCXX ON CACHE BOOL "" FORCE)
+        endif()
         
         add_subdirectory(external/google/benchmark/ external/google/benchmark)
         set_property(TARGET benchmark PROPERTY FOLDER "external-libs")

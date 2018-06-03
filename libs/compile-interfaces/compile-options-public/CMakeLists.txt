@@ -29,16 +29,16 @@ install(
     TARGETS
         oss-compile-options-public
     EXPORT
-        CompileOptionsPublicTargets
+        OssCompileOptionsPublicTargets
 )
 
 install(
     EXPORT
-        CompileOptionsPublicTargets
+        OssCompileOptionsPublicTargets
     FILE
-        CompileOptionsPublicTargets.cmake
+        OssCompileOptionsPublicTargets.cmake
     NAMESPACE
         oss::
     DESTINATION
-        lib/cmake/CompileOptionsPublicTargets
+        lib/cmake/OssCompileOptionsPublicTargets
 )

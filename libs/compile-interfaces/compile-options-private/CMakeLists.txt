@@ -55,16 +55,16 @@ install(
     TARGETS
         oss-compile-options-private
     EXPORT
-        CompileOptionsPrivateTargets
+        OssCompileOptionsPrivateTargets
 )
 
 install(
     EXPORT
-        CompileOptionsPrivateTargets
+        OssCompileOptionsPrivateTargets
     FILE
-        CompileOptionsPrivateTargets.cmake
+        OssCompileOptionsPrivateTargets.cmake
     NAMESPACE
         oss::
     DESTINATION
-        lib/cmake/CompileOptionsPrivateTargets
+        lib/cmake/OssCompileOptionsPrivateTargets
 )
