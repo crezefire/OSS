@@ -5,7 +5,7 @@ project(oss
 
 add_library(oss
     STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/engine.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
 )
 
 add_library(oss::oss
