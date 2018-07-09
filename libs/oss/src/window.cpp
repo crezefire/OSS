@@ -21,12 +21,12 @@ bool RegisterAppClass(HINSTANCE hInstance, char const* const windowName) {
   wcex.cbClsExtra    = 0;
   wcex.cbWndExtra    = 0;
   wcex.hInstance     = hInstance;
-  wcex.hIcon         = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
+  //wcex.hIcon         = LoadIconA(hInstance, MAKEINTRESOURCEA(IDI_APPLICATION));
   wcex.hCursor       = LoadCursor(NULL, IDC_ARROW);
   wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
   wcex.lpszMenuName  = NULL;
   wcex.lpszClassName = windowName;
-  wcex.hIconSm       = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_APPLICATION));
+  //wcex.hIconSm       = LoadIconA(wcex.hInstance, MAKEINTRESOURCEA(IDI_APPLICATION));
 
   if (!RegisterClassEx(&wcex)) { return false; }
 
