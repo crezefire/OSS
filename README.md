@@ -1,6 +1,6 @@
 # OSS : Operating System Services
 
-The OS abstraction library you've never needed.
+The OS abstraction library you've never needed. Windows & Linux only.
 
 ## Getting Started
 - Run `get_latest_deps.sh` to pull down 3rd party dependencies from Github. Use `[-s|--ssh]` to use ssh.
