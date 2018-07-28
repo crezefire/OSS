@@ -6,13 +6,13 @@
 namespace oss {
 
 struct Window {
-  struct Handle {
-    void* WindowsHandle;
-  };
+    struct Handle {
+        void* WindowsHandle;
+    };
 
-  static std::optional<Handle> CreateOSWindow(std::string_view name, int width, int height);
+    static std::optional<Handle> CreateOSWindow(std::string_view name, int const width, int const height);
 
-  static bool RunOSUpdateLoop();
+    static bool RunOSUpdateLoop();
 };
 
 } // namespace oss
